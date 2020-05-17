@@ -1,0 +1,32 @@
+#home-title{
+    color: #FFE933;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+#home-title-span{
+    color: #129E25;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#title-container{
+    display: flex;
+    flex-direction: column;
+}
+
+img{
+    height: 150px;
+    width: 150px;
+    border-radius: 8px;
+    border-left: 1px #129E25 solid;
+    border-right: 1px #FFE933 solid;
+}
+
+#link{
+    color: white;
+}
+
+#link:hover{
+    text-emphasis: none;
+    text-decoration: none;
+}

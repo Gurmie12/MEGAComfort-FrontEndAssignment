@@ -1,0 +1,34 @@
+#sale-title{
+    color: #129E25;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+}
+
+.card{
+    background-color: #FFE933;
+}
+
+#totalDiv{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+#adding-card{
+    background-color: #129E25;
+}
+
+#add-title{
+    color: #FFE933;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+}
+
+#add-employee-title{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 25px;
+}
+
+#add-product-title{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 25px;
+}

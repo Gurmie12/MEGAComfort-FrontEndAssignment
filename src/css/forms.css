@@ -1,0 +1,29 @@
+#employeeSalesForm{
+    background-color: #129E25;
+
+}
+
+#form-title{
+    color: #FFE933;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+}
+
+#dateRow{
+    display: flex;
+}
+
+#table-head{
+    background-color: #FFE933;
+    color: #129E25;
+    font-family:'Josefin Sans', sans-serif;
+}
+
+tr{
+    text-align: center;
+}
+
+#not-avail{
+    font-family:'Josefin Sans', sans-serif;
+    font-size: 35px;
+}
