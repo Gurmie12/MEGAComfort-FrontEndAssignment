@@ -37,12 +37,12 @@ function App() {
           <Router>
             <div className="row text-center" data-aos="zoom-out">
               <div className="col-sm text-center">
-                <button className="btn btn-warning">
+                <button className="btn btn-warning" id="sale-button">
                   <Link to="/sale" id="link">Make a Sale</Link>
                 </button>
               </div>
               <div className="col-sm text-center">
-                <button className="btn btn-success">
+                <button className="btn btn-success" id="form-button">
                   <Link to="/form" id="link">Employee Sales Form</Link>
                 </button>
               </div>

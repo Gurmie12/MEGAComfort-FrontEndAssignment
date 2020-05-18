@@ -197,11 +197,11 @@ function Forms(){
                     <div className="card-body text-center" id="card-body">
                         <form id="retrieveInfoForm">
                             <div className="form-group row" id="dateRow">
-                                <div className="mr-auto ml-5">   
+                                <div className="mr-auto ml-5" id="start-col">   
                                     <label for="startDate">Start Date</label>
                                     <input type="date" className="form-control" id="startDate" onChange={e => setStartDate(e.target.value)}></input>
                                 </div>
-                                <div className="ml-auto mr-5">
+                                <div className="ml-auto mr-5" id="end-col">
                                     <label for="endDate">End Date</label>
                                     <input type="date" className="form-control" id="endDate" onChange={e => setEndDate(e.target.value)}></input>
                                 </div>

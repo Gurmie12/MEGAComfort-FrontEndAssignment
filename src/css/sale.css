@@ -32,3 +32,35 @@
     font-family: 'Josefin Sans', sans-serif;
     font-size: 25px;
 }
+
+#addEmployee-div{
+    border-right: 1px solid yellow;
+}
+
+#addProduct-dvi{
+    border-left: 1px solid yellow;
+}
+
+@media(max-width: 600px){
+    #product-row{
+        margin-bottom: 30px;
+    }
+
+    #edit-button{
+        margin-top: 15px;
+    }
+
+    #addEmployee-div{
+        border-right: none;
+        margin-bottom: 50px;
+        border-bottom: 1px solid yellow;
+    }
+
+    #add-employee-button{
+        margin-bottom: 20px;
+    }
+
+    #addProduct-div{
+        border-left: none;
+    }
+}

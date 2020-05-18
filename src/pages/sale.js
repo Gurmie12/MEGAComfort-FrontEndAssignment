@@ -376,7 +376,7 @@ function Sale(){
                                          {
                                         products.map((product, i) =>{
                                             return(
-                                                <div className="row text-center justify-content-center mt-2" key={i}>
+                                                <div className="row text-center justify-content-center mt-2" key={i} id="product-row">
                                                     <div className="col-sm">
                                                         <h4>{product.name}</h4>
                                                     </div>
@@ -387,7 +387,7 @@ function Sale(){
                                                         <label for={product.name}>Quantity</label>
                                                         <input type="number" id={product.name} onChange={e => handleProductChange(e, product)}></input>
                                                     </div>
-                                                    <div className='col-sm'>
+                                                    <div className='col-sm' id="edit-button">
                                                         <button type="button" className="btn btn-outline-success" id={product.name.toLowerCase()} onClick={e => setChangingProduct(e.target.id)} data-toggle="modal" data-target="#changePriceModal">Edit Price</button>
                                                     </div>
                                                 </div>
@@ -416,7 +416,7 @@ function Sale(){
                     </div>
                     <div className="card-body justify-content-center text-center" id="add-body">
                         <div className="row" id="add-row">
-                            <div className="col-lg" style={{borderRight: '1px solid yellow'}}>
+                            <div className="col-lg" id="addEmployee-div">
                                 <form id="add-employee-form">
                                     <h1 className="heading-4" id="add-employee-title">
                                         <strong>Add Employee</strong>
@@ -439,10 +439,10 @@ function Sale(){
                                         </label>
                                         <input type="number" id="newEmployeeCommision" placeholder="e.g. 15" className="form-control" onChange={e => setNewEmployeeCommision(e.target.value)}></input>
                                     </div>
-                                    <button type="submit" className="btn btn-warning mt-2" onClick={e => addEmployee(e)}>Add!</button>
+                                    <button type="submit" className="btn btn-warning mt-2" onClick={e => addEmployee(e)} id="add-employee-button">Add!</button>
                                 </form>
                             </div>
-                            <div className="col-lg" style={{borderLeft: '1px solid yellow'}}>
+                            <div className="col-lg"  id="addProduct-div">
                                 <form id="add-product-form">
                                     <h1 className="heading-4" id="add-product-title">
                                         <strong>Add Product</strong>

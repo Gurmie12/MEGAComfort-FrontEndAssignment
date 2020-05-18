@@ -27,3 +27,14 @@ tr{
     font-family:'Josefin Sans', sans-serif;
     font-size: 35px;
 }
+
+
+@media(max-width: 600px){
+    #dateRow{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+}
+
