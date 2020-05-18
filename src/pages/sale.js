@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../css/sale.css';
 
 //Create classes to represent the objects for employees and products
+ 
 export class Employee{
     constructor(name, position, commision){
         this.name = name;
@@ -17,17 +18,21 @@ export class Product{
     }
 }
 
-//Create objects for each employee
+//Create objects for each employee that is guaranteed to be working
+
 export const jeff = new Employee("Jeff Terry", "Senior", 10);
 export const thomas = new Employee("Thomas Black", "Manager", 20);
 export const john = new Employee("John Rice", "Junior", 5);
 export const larry = new Employee("Larry Long", "Junior", 0);
 
-//Create objects for each product
+//Create objects for each product that is guaranteed to be sold
+
 export const freshLemonade = new Product('Fresh Lemon Lemonade', 1.50);
 export const orangeSplash = new Product('Orange And Lemon Splash', 2.00);
 export const sugaryShocker = new Product('Sugary Shocker', 3.00);
 export const wildWhiskey = new Product('Wild Whiskey Whack', 5.50);
+
+//If the users localstorage cache is emptied then reset the localstorage with the basic employees and products
 
 if(localStorage.getItem('Employees') === null){
     localStorage.setItem('Employees', JSON.stringify([jeff, thomas, john, larry]));
@@ -36,8 +41,13 @@ if(localStorage.getItem('Employees') === null){
 if(localStorage.getItem('Products') === null){
     localStorage.setItem('Products', JSON.stringify([freshLemonade, orangeSplash, sugaryShocker, wildWhiskey]));
 }
+
+//React component rendering the sales module
+
 function Sale(){
+
     //Hooks that hold global variables that change based on user input
+
     const [runningTotal, setRunningTotal] = useState(0);
     let curPrice;
     let selectedEmployee;
@@ -66,6 +76,9 @@ function Sale(){
 
     const [saleDate, setSaleDate] = useState('');
 
+
+    //Continous fetching of the localstorage incase a new product or employee is added and the length of the array changes
+
     useEffect(() =>{
         setEmployees(JSON.parse(localStorage.getItem('Employees')));
     }, [JSON.parse(localStorage.getItem('Employees')).length])
@@ -74,6 +87,9 @@ function Sale(){
         setProducts(JSON.parse(localStorage.getItem('Products')));
     }, [JSON.parse(localStorage.getItem('Products')).length])
 
+
+    //Function that handles the implementation of adding a new employee by first validating that all the fields are filled and then 
+    //Setting the localstorage to append the new employee
 
     function addEmployee(e){
         e.preventDefault();
@@ -111,6 +127,8 @@ function Sale(){
         }
     }
 
+    //Pointer function that allows dynamic change through global hook that changes based on input of quantity  
+
     const handleProductChange = (e, product) =>{
         let curTotal = runningTotal;
         let curProduct = e.target.id.replace(/\s/g, "");
@@ -135,6 +153,7 @@ function Sale(){
             setCurPurchaseSheet(tempPurchaseSheet);
         }
     }
+    //Sets a hook as the employee choosen changes so that the sale is dynamicly changed
 
     const handleSelectChange = (e) =>{
         let cur = JSON.parse(e.target.value);
@@ -144,8 +163,11 @@ function Sale(){
         selectedEmployee = cur;
     }
 
+    //Set each of the attributes of a sale that will be required when searching sales
+
     const handleSubmit = () =>{
         //Set commision made in the purchase object
+
         let tempPurchaseSheet = curPurchaseSheet;
         let commision;
         tempPurchaseSheet.Total = tempPurchaseSheet.Total.toFixed(2);
@@ -161,6 +183,7 @@ function Sale(){
         tempPurchaseSheet.date = saleDate;
         setCurPurchaseSheet(tempPurchaseSheet);
 
+        //If there is no other sale made, create new array and store in localstorage or append to previous sales array
         if(localStorage.getItem('Sales') !== null){
             let tempLocal = JSON.parse(localStorage.getItem('Sales'));
             tempLocal.push(curPurchaseSheet);
@@ -172,6 +195,8 @@ function Sale(){
             localStorage.setItem('Sales', JSON.stringify(purchases));
         }
         clearInputs();
+        //Reset the hook
+
         setCurPurchaseSheet({
             FreshLemonLemonade: 0,
             OrangeAndLemonSplash: 0,
@@ -189,6 +214,7 @@ function Sale(){
 
     }
 
+    //Handle a form clear incase the client would like to reset all fields and start over
     const handleRedo = () =>{
         clearInputs();
         showAlert('Please try again', 'alert-warning');
@@ -207,6 +233,8 @@ function Sale(){
         selectedEmployee = null;
     }
 
+    //Helper function for after a form is submited, all of the fields will reset so client can add another sale
+
     function clearInputs(){
         const selector = document.getElementById('employee-selector');
         selector.value = null;
@@ -217,6 +245,8 @@ function Sale(){
 
         document.getElementById('saleDate').value = "";
     }
+
+    //Function that shows an alert within the sale card based on mesage and color of alert
 
     function showAlert(message, className){
         const saleFormContainer = document.getElementById('sale-form-container');
@@ -241,6 +271,8 @@ function Sale(){
 
     }
 
+    //Helper function that shows alert if trying to add a new employee
+
     function showAddAlert(message, className){
         const saleFormContainer = document.getElementById('add-body');
         const saleForm = document.getElementById('add-row');
@@ -263,6 +295,9 @@ function Sale(){
         }
     }
 
+    //Pointer function that changes the price of a specfic product if the client would like to give a discount or change the price for good.
+    //Gets the localstorage of the products and changes the price of the corresponding product and pushes it back to localstorage
+
     const changePrice = () =>{
         if(changedPrice === 0){
             showAddAlert('Please change the price!', 'alert-danger');
@@ -281,6 +316,7 @@ function Sale(){
 
     }
 
+    //Helper function that shows alert in the editing price modal incase the field is empty
     function showModalAlert(message, className){
         const saleFormContainer = document.getElementById('modalBody');
         const saleForm = document.getElementById('changePriceForm');
@@ -304,6 +340,7 @@ function Sale(){
     }
 
 
+    //Return all of the JSX and HTMl
     return( 
         <div className="body mb-5">
             <div className="container">

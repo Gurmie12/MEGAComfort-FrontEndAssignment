@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import '../css/forms.css';
 
+//Import the basic products and employees from the sales form with the class implementation incase of a localstorage reset
+
 import {jeff, thomas, john, larry, freshLemonade, orangeSplash, sugaryShocker, wildWhiskey} from './sale';
 
+//React component of the Form that allows retreival of all sales between dates and employees
+
 function Forms(){
+
+    //Global react hooks that dynamicaly change with user inputs
+
     const [startDate, setStartDate] = useState(0);
     const [endDate, setEndDate] = useState(0);
     const [employees, setEmployees] = useState([]);
@@ -12,6 +19,7 @@ function Forms(){
     const [employeeInfo, setEmployeeInfo] = useState([]);
     const [sales, setSales] = useState([]);
 
+    //If local storage is empty push the default products and employees
 
     if(localStorage.getItem('Employees') === null){
         localStorage.setItem('Employees', JSON.stringify([jeff, thomas, john, larry]));
@@ -21,6 +29,7 @@ function Forms(){
         localStorage.setItem('Products', JSON.stringify([freshLemonade, orangeSplash, sugaryShocker, wildWhiskey]));
     }
 
+    //Life cycle component that fetches the local storage and sets it to the hook on refresh and changes
     useEffect(() =>{
         setEmployees(JSON.parse(localStorage.getItem('Employees')));
     }, [JSON.parse(localStorage.getItem('Employees')).length])
@@ -33,10 +42,14 @@ function Forms(){
         setSales(JSON.parse(localStorage.getItem('Sales')));
     }, [JSON.parse(localStorage.getItem('Products')).length])
 
+    //Handles a dynamic change in selected employee
+
     const handleSelectChange = (e) =>{
         let cur = JSON.parse(e.target.value);
         setSelectedEmployee(cur); 
     }
+
+    //If the user submits form, set the start and end dates to a object and push that to the report generating function if the fields are not null
 
     const handleReportClick = () =>{
         const start = document.getElementById('startDate');
@@ -54,6 +67,7 @@ function Forms(){
         }
     }
 
+    //Filters the sales array in localstorage so that the new hook that carries filtered data is of that that includes attributes with the start and end date of the employee
     function generateReport(input){
         let filtered = [];
         sales.forEach(sale =>{
@@ -66,6 +80,7 @@ function Forms(){
         setEmployeeInfo(filtered)
     }
 
+    //Function that handles rendering of the sold items list
     function soldItemsLister(sale){
         let items = [];
         products.forEach(product =>{
@@ -85,6 +100,8 @@ function Forms(){
         )
     }
 
+    // pointer function that returns that total of all filtered sales
+
     const totalSold = () =>{
         let total = 0;
         if(employeeInfo.length === 0){
@@ -98,6 +115,8 @@ function Forms(){
         }
     }
 
+    // pointer function that returns that total of all filtered commissions
+
     function totalCommision(){
         let total = 0;
         if(employeeInfo.length === 0){
@@ -110,6 +129,8 @@ function Forms(){
             return total.toFixed(2);
         }
     }
+
+    //Pointer function that retuns the filtered data as a table if it is not null, if there exists no data with the specified attributes, then return there is no data
 
     const renderInfo = () =>{
         if(employeeInfo.length === 0){
@@ -140,6 +161,8 @@ function Forms(){
         }
     }
 
+    //Function that handeles showing the alerts incase of missing fields or succesfull entries
+    
     function showAlert(message, className){
         const saleFormContainer = document.getElementById('card-body');
         const saleForm = document.getElementById('retrieveInfoForm');
