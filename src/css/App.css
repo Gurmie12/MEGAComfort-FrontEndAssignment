@@ -47,6 +47,15 @@ img{
     justify-content: center;
 }
 
+.body{
+    background-image: linear-gradient(to bottom right,#129E25, #FFE933);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: auto;
+}
+
 
 @media(max-width: 600px){
     #sale-button{

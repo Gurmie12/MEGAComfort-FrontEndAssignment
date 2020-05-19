@@ -123,11 +123,13 @@ function App() {
       <div className="container mt-4">
         <div className="container justify-content-center text-center mt-5 mb-5" id="title-container">
           <div>
+            <a href="/">
             <img
             src={logo}
             alt="logo-home"
             >
             </img>
+            </a>
           </div>
           <div className="mt-2" data-aos="zoom-in">
             <h1 className="heading-4" id="home-title">

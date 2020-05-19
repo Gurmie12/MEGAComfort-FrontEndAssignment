@@ -186,7 +186,7 @@ function Forms(){
     }
 
     return(
-        <div className="EmployeeForm-body">
+        <div className="EmployeeForm-body pb-5">
             <div className="container">
                 <div className="card" id="employeeSalesForm">
                     <div className="card-header text-center">

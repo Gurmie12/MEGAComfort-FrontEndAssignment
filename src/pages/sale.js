@@ -342,8 +342,8 @@ function Sale(){
 
     //Return all of the JSX and HTMl
     return( 
-        <div className="body mb-5">
-            <div className="container">
+        <div className="body pb-5">
+            <div>
                 <div className="card">
                     <div className="card-header text-center">
                         <p className="lead" id="sale-title">
@@ -354,7 +354,7 @@ function Sale(){
                         <div className="container" id="sale-form-container">
                             <form id="sale-form">
                                 <div className="form-group">
-                                    <label for="employeeInputCheckout">Choose an employee who is checking the customer out</label>
+                                    <label for="employeeInputCheckout" style={{fontFamily: "'Josefin Sans', sans-serif", fontSize: '20px'}}>Choose an employee who is checking the customer out</label>
                                     <select className="form-control mt-2" onChange={handleSelectChange} defaultValue={JSON.stringify(employees[0])} id="employee-selector">
                                         {
                                             employees.map((employeeInstance,i) =>{
@@ -367,7 +367,7 @@ function Sale(){
                                 </div>
                                 <br />
                                 <div className="form-group">
-                                    <label for="saleData">Date:</label>
+                                    <label for="saleData" style={{fontFamily: "'Josefin Sans', sans-serif", fontSize: '20px'}}>Date:</label>
                                     <input type="date" className="form-control" id="saleDate" onChange={e => setSaleDate(e.target.value)}></input>
                                 </div>
                                 <br />
@@ -381,7 +381,7 @@ function Sale(){
                                                         <h4>{product.name}</h4>
                                                     </div>
                                                     <div className="col-sm">
-                                                        <h4>{product.price.toFixed(2)}</h4>
+                                                        <h4>${product.price.toFixed(2)}</h4>
                                                     </div>  
                                                     <div className="col-sm" style={{display: 'flex', flexDirection: 'column'}}>
                                                         <label for={product.name}>Quantity</label>
@@ -397,7 +397,7 @@ function Sale(){
                                     </ul>
                                 </div>
                                 <div id="totalDiv">
-                                    <h4 id="dynamicTotal mr-5">Total: ${runningTotal.toFixed(2)}</h4>
+                                    <h4 id="dynamicTotal">Total: ${runningTotal.toFixed(2)}</h4>
                                     <button className="btn btn-success ml-5" type="button" onClick={handleSubmit}>Checkout!</button>
                                     <button className="btn btn-outline-danger ml-5" type="button" onClick={handleRedo}>Restart!</button>
                                 </div>
@@ -407,7 +407,7 @@ function Sale(){
                     </div>
                 </div>
             </div>
-            <div className="container mt-5">
+            <div className="mt-5">
                 <div className="card" id="adding-card">
                     <div className="card-header text-center">
                         <p className="lead" id="add-title">

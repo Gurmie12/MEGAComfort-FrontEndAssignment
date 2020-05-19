@@ -41,6 +41,15 @@
     border-left: 1px solid yellow;
 }
 
+#product-row{
+    font-family: 'Josefin Sans', sans-serif
+}
+
+#dynamicTotal{
+    font-family: 'Josefin Sans', sans-serif
+}
+
+
 @media(max-width: 600px){
     #product-row{
         margin-bottom: 30px;
@@ -63,4 +72,5 @@
     #addProduct-div{
         border-left: none;
     }
+
 }
