@@ -31,6 +31,15 @@ img{
     text-decoration: none;
 }
 
+#topP-badge{
+    background-color: #129E25;
+}
+
+#topE-badge{
+    background-color: #FFE933;
+}
+
+
 @media(max-width: 600px){
     #sale-button{
         margin-bottom: 20px;
