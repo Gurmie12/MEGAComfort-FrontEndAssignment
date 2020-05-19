@@ -28,6 +28,11 @@ tr{
     font-size: 35px;
 }
 
+#card-body{
+    font-size: 20px;
+    color: #FFE933;
+}
+
 
 @media(max-width: 600px){
     #dateRow{

@@ -92,7 +92,7 @@ function Forms(){
                 {
                     items.map((item,i) =>{
                         return(
-                            <p key={i}>{item.replace(/([A-Z])/g, ' $1').trim()}: {sale[item]}</p>
+                            <p key={i}>{item.replace(/([A-Z])/g, ' $1').trim()}: {(sale[item] === undefined) ? 0:sale[item] }</p>
                         )
                     })
                 }

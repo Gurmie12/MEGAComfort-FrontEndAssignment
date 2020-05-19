@@ -53,12 +53,48 @@ img{
     bottom: 0;
     right: 0;
     left: 0;
+    height: 100%vh;
     overflow: auto;
+}
+
+#topE-name{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #129E25;
+    font-size: 15px;
+}
+
+#topP-name{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #FFE933;
+    font-size: 15px;
+
+}
+
+#sale-button{
+    background-color: #FFE933;
+    color: #129E25;
+}
+
+#form-button{
+    background-color: #129E25;
+}
+
+#link1{
+    color: #129E25;
+}
+
+#link2{
+    color: #FFE933;
 }
 
 
 @media(max-width: 600px){
     #sale-button{
         margin-bottom: 20px;
+    }
+
+    .navbar{
+        text-align: center;
+        justify-content: center;
     }
 }

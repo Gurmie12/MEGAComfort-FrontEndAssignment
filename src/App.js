@@ -64,7 +64,9 @@ function App() {
       //Add the amount sold to the specfic name index
       for(let i = 0; i < sales.length; i++){
         for(let j = 0; j < products.length; j++){
-          helperAmount[j] += parseInt(sales[i][products[j].name.replace(/ +/g, "")]);
+          if(sales[i][products[j].name.replace(/ +/g, "")] !== undefined){
+            helperAmount[j] += parseFloat(sales[i][products[j].name.replace(/ +/g, "")]);
+          }
         };
       };
 
@@ -113,10 +115,12 @@ function App() {
       <nav class="navbar navbar-expand-lg">
         <div className="mt-3 mr-auto" id="top-container">
           <span class="badge" id="topP-badge">
-            <i className="fa fa-lemon fa-2x" style={{color: '#FFE933'}}> Top Product: {findTopProduct()}</i>
+            <i className="fa fa-lemon" style={{color: '#FFE933'}}>  Top Product: </i>
+            <strong id="topP-name"> {findTopProduct()}</strong>
           </span>
           <span class="badge mt-2" id="topE-badge">
-            <i className="fa fa-user-check fa-2x" style={{color: '#129E25'}}> Top Employee: {findTopEmployee()}</i>
+            <i className="fa fa-user-check" style={{color: '#129E25'}}>  Top Employee: </i>
+            <strong id="topE-name"> {findTopEmployee()}</strong>
           </span>
         </div>
       </nav>
@@ -145,12 +149,12 @@ function App() {
             <div className="row text-center" data-aos="zoom-out">
               <div className="col-sm text-center">
                 <button className="btn btn-warning" id="sale-button">
-                  <Link to="/sale" id="link">Make a Sale</Link>
+                  <Link to="/sale" id="link1">Make a Sale</Link>
                 </button>
               </div>
               <div className="col-sm text-center">
                 <button className="btn btn-success" id="form-button">
-                  <Link to="/form" id="link">Employee Sales Form</Link>
+                  <Link to="/form" id="link2">Employee Sales Form</Link>
                 </button>
               </div>
             </div>

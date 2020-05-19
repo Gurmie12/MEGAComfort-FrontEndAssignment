@@ -26,19 +26,27 @@
 #add-employee-title{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 25px;
+    color: #FFE933;
 }
 
 #add-product-title{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 25px;
+    color: #FFE933;
 }
 
 #addEmployee-div{
     border-right: 1px solid yellow;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+
 }
 
-#addProduct-dvi{
+#addProduct-div{
     border-left: 1px solid yellow;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+
 }
 
 #product-row{
@@ -47,6 +55,23 @@
 
 #dynamicTotal{
     font-family: 'Josefin Sans', sans-serif
+}
+
+#checkout-btn{
+    color: #FFE933;
+}
+
+#add-employee-button{
+    background-color: #FFE933;
+    color: #129E25;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#add-product-button{
+    background-color: #FFE933;
+    color: #129E25;
+    font-family: Arial, Helvetica, sans-serif;
+
 }
 
 

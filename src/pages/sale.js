@@ -142,7 +142,7 @@ function Sale(){
                 if(document.getElementById(product.name).value === ""){
                     remainder += 0;
                 }else{
-                    remainder+= document.getElementById(product.name).value === ""
+                    handleRedo();
                 }
             })
             setRunningTotal(remainder);
@@ -166,52 +166,54 @@ function Sale(){
     //Set each of the attributes of a sale that will be required when searching sales
 
     const handleSubmit = () =>{
-        //Set commision made in the purchase object
-
-        let tempPurchaseSheet = curPurchaseSheet;
-        let commision;
-        tempPurchaseSheet.Total = tempPurchaseSheet.Total.toFixed(2);
-
-        employees.forEach(employee =>{
-            if(JSON.stringify(employee.name) === tempPurchaseSheet.Employee){
-                commision = employee.commision
-            }
-        })
-
-        let made = (commision * tempPurchaseSheet.Total).toFixed(2);
-        tempPurchaseSheet.commisionMade = made;
-        tempPurchaseSheet.date = saleDate;
-        setCurPurchaseSheet(tempPurchaseSheet);
-
-        //If there is no other sale made, create new array and store in localstorage or append to previous sales array
-        if(localStorage.getItem('Sales') !== null){
-            let tempLocal = JSON.parse(localStorage.getItem('Sales'));
-            tempLocal.push(curPurchaseSheet);
-            tempLocal = JSON.stringify(tempLocal);
-            localStorage.setItem('Sales', tempLocal);
+        const date = document.getElementById('saleDate');
+        if(date.value === ""){
+            showAlert('Please choose date and have at least one sold item', 'alert-danger');
         }else{
-            let purchases = [];
-            purchases.push(curPurchaseSheet);
-            localStorage.setItem('Sales', JSON.stringify(purchases));
+            let tempPurchaseSheet = curPurchaseSheet;
+            let commision;
+            tempPurchaseSheet.Total = tempPurchaseSheet.Total.toFixed(2);
+
+            employees.forEach(employee =>{
+                if(JSON.stringify(employee.name) === tempPurchaseSheet.Employee){
+                    commision = employee.commision
+                }
+            })
+
+            let made = (commision * tempPurchaseSheet.Total).toFixed(2);
+            tempPurchaseSheet.commisionMade = made;
+            tempPurchaseSheet.date = saleDate;
+            setCurPurchaseSheet(tempPurchaseSheet);
+
+            //If there is no other sale made, create new array and store in localstorage or append to previous sales array
+            if(localStorage.getItem('Sales') !== null){
+                let tempLocal = JSON.parse(localStorage.getItem('Sales'));
+                tempLocal.push(curPurchaseSheet);
+                tempLocal = JSON.stringify(tempLocal);
+                localStorage.setItem('Sales', tempLocal);
+            }else{
+                let purchases = [];
+                purchases.push(curPurchaseSheet);
+                localStorage.setItem('Sales', JSON.stringify(purchases));
+            }
+            clearInputs();
+            //Reset the hook
+
+            setCurPurchaseSheet({
+                FreshLemonLemonade: 0,
+                OrangeAndLemonSplash: 0,
+                SugaryShocker: 0,
+                WildWhiskeyWhack: 0,
+                Total: 0,
+                Employee: "",
+                commisionMade: 0,
+                date: ''
+            })
+
+            setRunningTotal(0);
+            selectedEmployee = null;
+            showAlert('Purchase was succesfully made!', 'alert-success');
         }
-        clearInputs();
-        //Reset the hook
-
-        setCurPurchaseSheet({
-            FreshLemonLemonade: 0,
-            OrangeAndLemonSplash: 0,
-            SugaryShocker: 0,
-            WildWhiskeyWhack: 0,
-            Total: 0,
-            Employee: "",
-            commisionMade: 0,
-            date: ''
-        })
-
-        setRunningTotal(0);
-        selectedEmployee = null;
-        showAlert('Purchase was succesfully made!', 'alert-success');
-
     }
 
     //Handle a form clear incase the client would like to reset all fields and start over
@@ -300,7 +302,7 @@ function Sale(){
 
     const changePrice = () =>{
         if(changedPrice === 0){
-            showAddAlert('Please change the price!', 'alert-danger');
+            showModalAlert('Please change the price!', 'alert-danger');
         }else{
             let temp = JSON.parse(localStorage.getItem('Products'));
             temp.forEach(product =>{
@@ -383,9 +385,9 @@ function Sale(){
                                                     <div className="col-sm">
                                                         <h4>${product.price.toFixed(2)}</h4>
                                                     </div>  
-                                                    <div className="col-sm" style={{display: 'flex', flexDirection: 'column'}}>
-                                                        <label for={product.name}>Quantity</label>
-                                                        <input type="number" id={product.name} onChange={e => handleProductChange(e, product)}></input>
+                                                    <div className="col-sm form-group" style={{display: 'flex', flexDirection: 'column'}}>
+                                                            <label for={product.name}>Quantity</label>
+                                                            <input type="number" id={product.name} onChange={e => handleProductChange(e, product)}></input>
                                                     </div>
                                                     <div className='col-sm' id="edit-button">
                                                         <button type="button" className="btn btn-outline-success" id={product.name.toLowerCase()} onClick={e => setChangingProduct(e.target.id)} data-toggle="modal" data-target="#changePriceModal">Edit Price</button>
@@ -398,7 +400,7 @@ function Sale(){
                                 </div>
                                 <div id="totalDiv">
                                     <h4 id="dynamicTotal">Total: ${runningTotal.toFixed(2)}</h4>
-                                    <button className="btn btn-success ml-5" type="button" onClick={handleSubmit}>Checkout!</button>
+                                    <button className="btn btn-success ml-5" type="button" onClick={handleSubmit} id="checkout-btn">Checkout!</button>
                                     <button className="btn btn-outline-danger ml-5" type="button" onClick={handleRedo}>Restart!</button>
                                 </div>
                             </form>
@@ -459,7 +461,7 @@ function Sale(){
                                         </label>
                                         <input type="text" id="newProductPrice" placeholder="e.g. 3.50" className="form-control" onChange={e => setNewProductPrice(e.target.value)}></input>
                                     </div>
-                                    <button type="submit" className="btn btn-warning mt-2" onClick={e => addProduct(e)}>Add!</button>
+                                    <button type="submit" className="btn btn-warning mt-2" onClick={e => addProduct(e)} id="add-product-button">Add!</button>
                                 </form>
                             </div>
                         </div>
