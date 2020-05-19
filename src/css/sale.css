@@ -98,4 +98,17 @@
         border-left: none;
     }
 
+    #totalDiv{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #restart-btn{
+        margin-top: 20px;
+    }
+
+    #checkout-btn{
+        margin-top: 20px;
+    }
+
 }

@@ -4,13 +4,11 @@ import Forms from './pages/forms.js';
 import Sale from './pages/sale.js';
 import logo from './img/logo.png';
 import AOS from 'aos';
-import 'aos/dist/aos.css';
 import '@fortawesome/fontawesome-free/css/all.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {jeff, thomas, john, larry, freshLemonade, orangeSplash, sugaryShocker, wildWhiskey} from './pages/sale';
 
 
-AOS.init({duration: 500});
 
 
 function App() {
@@ -82,32 +80,40 @@ function App() {
 
   //Render function that finds the top employee based on the overall $ of sales
   function findTopEmployee(){
-      let sales = JSON.parse(localStorage.getItem('Sales'));
-      let helperNames = [];
-      let helperAmount = [];
 
-      for(let i = 0; i < Employees.length; i++){
-        helperNames.push(Employees[i].name);
-      }
-      for(let k = 0; k < Employees.length; k++){
-        helperAmount.push(0);
-      }
+      if(localStorage.getItem('Sales') === null){
+        return(
+          'There are no sales!'
+        )
+      }else{
 
-      for(let j = 0; j < sales.length; j++){
-        for(let x = 0; x < helperNames.length; x++){
-          let temp = sales[j].Employee.replace('"', "");
-          temp = temp.replace('"', "");
-          if(temp === helperNames[x]){
-            helperAmount[x] += parseFloat(sales[j].Total);
+        let sales = JSON.parse(localStorage.getItem('Sales'));
+        let helperNames = [];
+        let helperAmount = [];
+
+        for(let i = 0; i < Employees.length; i++){
+          helperNames.push(Employees[i].name);
+        }
+        for(let k = 0; k < Employees.length; k++){
+          helperAmount.push(0);
+        }
+
+        for(let j = 0; j < sales.length; j++){
+          for(let x = 0; x < helperNames.length; x++){
+            let temp = sales[j].Employee.replace('"', "");
+            temp = temp.replace('"', "");
+            if(temp === helperNames[x]){
+              helperAmount[x] += parseFloat(sales[j].Total);
+            }
           }
         }
+
+        let indexOfMax = helperAmount.indexOf(Math.max(...helperAmount));
+
+        return(
+          helperNames[indexOfMax]
+        )
       }
-
-      let indexOfMax = helperAmount.indexOf(Math.max(...helperAmount));
-
-      return(
-        helperNames[indexOfMax]
-      )
   }
 
   return (
@@ -135,7 +141,7 @@ function App() {
             </img>
             </a>
           </div>
-          <div className="mt-2" data-aos="zoom-in">
+          <div className="mt-2">
             <h1 className="heading-4" id="home-title">
               <strong>Lemonade </strong>
               <span id="home-title-span">Stand</span>
@@ -146,7 +152,7 @@ function App() {
         <br/>
         <div className="container mt-5">
           <Router>
-            <div className="row text-center" data-aos="zoom-out">
+            <div className="row text-center">
               <div className="col-sm text-center">
                 <button className="btn btn-warning" id="sale-button">
                   <Link to="/sale" id="link1">Make a Sale</Link>

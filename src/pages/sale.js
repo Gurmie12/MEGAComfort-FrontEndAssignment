@@ -400,8 +400,8 @@ function Sale(){
                                 </div>
                                 <div id="totalDiv">
                                     <h4 id="dynamicTotal">Total: ${runningTotal.toFixed(2)}</h4>
-                                    <button className="btn btn-success ml-5" type="button" onClick={handleSubmit} id="checkout-btn">Checkout!</button>
-                                    <button className="btn btn-outline-danger ml-5" type="button" onClick={handleRedo}>Restart!</button>
+                                    <button className="btn btn-success mx-5" type="button" onClick={handleSubmit} id="checkout-btn">Checkout!</button>
+                                    <button className="btn btn-outline-danger mx-5" type="button" onClick={handleRedo} id="restart-btn">Restart!</button>
                                 </div>
                             </form>
 
