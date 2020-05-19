@@ -33,10 +33,18 @@ img{
 
 #topP-badge{
     background-color: #129E25;
+    padding: 10px 10px 10px 10px
 }
 
 #topE-badge{
     background-color: #FFE933;
+    padding: 10px 10px 10px 10px
+}
+
+#top-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 

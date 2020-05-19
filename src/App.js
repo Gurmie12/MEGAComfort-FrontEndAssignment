@@ -110,18 +110,14 @@ function App() {
 
   return (
     <div className="body">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-          <div className="ml-0 mr-5">
-            <span class="badge" id="topP-badge">
-              <i className="fa fa-lemon fa-2x" style={{color: '#FFE933'}}> Top Product: {findTopProduct()}</i>
-            </span>
-          </div>
-          <div className="mr-0 ml-5">
-            <span class="badge" id="topE-badge">
-              <i className="fa fa-user-check fa-2x" style={{color: '#129E25'}}> Top Employee: {findTopEmployee()}</i>
-            </span>
-          </div>
+      <nav class="navbar navbar-expand-lg">
+        <div className="mt-3 mr-auto" id="top-container">
+          <span class="badge" id="topP-badge">
+            <i className="fa fa-lemon fa-2x" style={{color: '#FFE933'}}> Top Product: {findTopProduct()}</i>
+          </span>
+          <span class="badge mt-2" id="topE-badge">
+            <i className="fa fa-user-check fa-2x" style={{color: '#129E25'}}> Top Employee: {findTopEmployee()}</i>
+          </span>
         </div>
       </nav>
       <div className="container mt-4">
