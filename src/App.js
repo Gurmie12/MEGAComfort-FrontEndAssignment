@@ -129,6 +129,21 @@ function App() {
             <strong id="topE-name"> {findTopEmployee()}</strong>
           </span>
         </div>
+        <div className="ml-auto" id="customerService-div">
+           <div id="star-div" className="justify-content-center">
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+            <i className="fa fa-star"></i>
+           </div>
+           <div className="text-center mt-2">
+            <h4 id="tips-title"><strong>In customer service</strong></h4>
+            <p id="tips"><strong>Ask: </strong>"How are you today?"</p>
+            <p id="tips"><strong>Be: </strong>Kind and understanding</p>
+            <p id="tips"><strong>Always: </strong>Keep a smile</p>
+           </div>
+        </div>
       </nav>
       <div className="container mt-4">
         <div className="container justify-content-center text-center mt-5 mb-5" id="title-container">

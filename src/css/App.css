@@ -54,7 +54,6 @@ img{
     right: 0;
     left: 0;
     height: 100%vh;
-    overflow: auto;
 }
 
 #topE-name{
@@ -87,6 +86,36 @@ img{
     color: #FFE933;
 }
 
+#customerService-div{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 1px solid #129E25;
+    padding: 10px 10px 10px 10px;
+    background-image: linear-gradient(to top left,#129E25, #FFE933);
+}
+
+#star-div{
+    display: flex;
+    flex-direction: row;
+}
+
+.fa-star{
+    color: #FFE933;
+}
+
+#tips{
+    font-family: 'Josefin Sans', sans-serif;
+    color: #FFE933;
+    font-size: 15px;
+}
+
+#tips-title{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+}
+
+
 
 @media(max-width: 600px){
     #sale-button{
@@ -96,5 +125,18 @@ img{
     .navbar{
         text-align: center;
         justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #customerService-div{
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 25px;
+    }
+
+    #top-container{
+        margin-right: auto;
+        margin-left: auto;
     }
 }
